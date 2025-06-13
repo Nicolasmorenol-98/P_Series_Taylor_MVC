@@ -6,12 +6,16 @@ class ControladorSerieTaylor:
         self.modelo = Serie_Taylor()
         self.vista = Mostrar_resultado()
 
-    def calcular_funcion_seno(self, valor_x, cantidad_de_terminos=10):
-        resultado_funcion_seno = self.modelo.calcular_funcion_seno(valor_x, cantidad_de_terminos)
-        grados = self.modelo.convertir_a_grados(valor_x)  # 🔹 Conversión de radianes a grados
-        self.vista.imprimir_resultado(resultado_funcion_seno, f"seno ({grados:.2f}°)")
+    def calcular_funciones(self, valor_x, cantidad_de_terminos=10):
+        funciones = {
+            "Exponencial (e^x)": self.modelo.calcular_funcion_exponencial(valor_x, cantidad_de_terminos),
+            "Seno (sen x)": self.modelo.calcular_funcion_seno(valor_x, cantidad_de_terminos),
+            "Coseno (cos x)": self.modelo.calcular_funcion_coseno(valor_x, cantidad_de_terminos),
+            "Arcsen (arcsen x)": self.modelo.calcular_funcion_arcsen(valor_x, cantidad_de_terminos),
+            "Arccos (arccos x)": self.modelo.calcular_funcion_arccos(valor_x, cantidad_de_terminos),
+            "Seno hiperbólico (senh x)": self.modelo.calcular_funcion_senh(valor_x, cantidad_de_terminos),
+            "Coseno hiperbólico (cosh x)": self.modelo.calcular_funcion_cosh(valor_x, cantidad_de_terminos),
+        }
 
-    def calcular_funcion_coseno(self, valor_x, cantidad_de_terminos=10):
-        resultado_coseno = self.modelo.calcular_funcion_coseno(valor_x, cantidad_de_terminos)
-        grados = self.modelo.convertir_a_grados(valor_x)  # 🔹 Conversión de radianes a grados
-        self.vista.imprimir_resultado(resultado_coseno, f"coseno ({grados:.2f}°)")
+        for nombre, resultado in funciones.items():
+            self.vista.imprimir_resultado(resultado, nombre)
