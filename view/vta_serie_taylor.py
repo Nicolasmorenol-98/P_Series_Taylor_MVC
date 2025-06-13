@@ -1,4 +1,4 @@
-class MostrarResultado:
+class Mostrar_resultado:
     @staticmethod
-    def imprimir_resultado(valor_calculado, nombre_funcion):
-        print(f"El resultado de {nombre_funcion} es: {valor_calculado:.6f}")
+    def imprimir_resultado(resultado_de_la_operacion, nombre_de_la_funcion):
+        print(f"El resultado de {nombre_de_la_funcion} es: {resultado_de_la_operacion:.6f}")
